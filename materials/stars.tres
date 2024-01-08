@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://mq6inndqf88j"]
+
+[ext_resource type="Shader" path="res://shaders/star_shape_move.gdshader" id="1_7uv4s"]
+
+[resource]
+shader = ExtResource("1_7uv4s")
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/rotate = 0.0
+shader_parameter/frequency = 9.445
+shader_parameter/star_size = 1.0
+shader_parameter/sine_speed = 3.0
+shader_parameter/sharpness = 0.945
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/black_color = null

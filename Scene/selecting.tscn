@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2rynssn68ssn"]
+
+[ext_resource type="Script" path="res://Scene/UI/Wiggle_polygon.gd" id="1_s7llp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkwdo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_udblm"]
+
+[node name="selecting" type="Node2D"]
+show_behind_parent = true
+position = Vector2(98, 43)
+
+[node name="red" type="Polygon2D" parent="."]
+modulate = Color(0.996078, 0, 0, 1)
+material = SubResource("ShaderMaterial_qkwdo")
+position = Vector2(-107.708, -42)
+scale = Vector2(1.02655, 1)
+polygon = PackedVector2Array(-11, 49, 215, 78, 209, 42, 2.92241, 13)
+script = ExtResource("1_s7llp")
+intensity = 10.0
+duration = 0.1
+
+[node name="blue" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_udblm")
+position = Vector2(-116.708, -35)
+color = Color(0, 1, 1, 1)
+polygon = PackedVector2Array(20, 63, 205, 51, 219, 3, 12, 28)
+script = ExtResource("1_s7llp")
+intensity = 10.0
+duration = 0.1

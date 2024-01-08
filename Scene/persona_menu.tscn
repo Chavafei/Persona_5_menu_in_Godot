@@ -1,0 +1,1384 @@
+[gd_scene load_steps=46 format=3 uid="uid://clnac4xlws0xe"]
+
+[ext_resource type="Material" uid="uid://mq6inndqf88j" path="res://materials/stars.tres" id="1_2h0tm"]
+[ext_resource type="Script" path="res://Scene/PersonaMenu_manager.gd" id="1_wa42r"]
+[ext_resource type="Script" path="res://Scene/polygon_outline.gd" id="1_x7s2m"]
+[ext_resource type="Script" path="res://Scene/copy_polygon.gd" id="2_wg4wp"]
+[ext_resource type="Texture2D" uid="uid://we8wxe57f0bb" path="res://white_square.png" id="3_31d48"]
+[ext_resource type="Material" uid="uid://bclenw36qrq7p" path="res://materials/star_grey.tres" id="3_k5ji4"]
+[ext_resource type="PackedScene" uid="uid://dr07qxv2tedmm" path="res://Scene/UI/menu_button.tscn" id="5_3ecqd"]
+[ext_resource type="Texture2D" uid="uid://d08l5mkc1siaa" path="res://Arts/menu_Item.png" id="6_k0q5i"]
+[ext_resource type="Texture2D" uid="uid://bsmhhft105cgw" path="res://Arts/menu_Equip.png" id="7_1o3da"]
+[ext_resource type="Texture2D" uid="uid://c73rgql4og3jx" path="res://Arts/joker/joker_main_menu.png" id="7_4pvbq"]
+[ext_resource type="PackedScene" uid="uid://db66oo3s713p4" path="res://Arts/joker/joker.tscn" id="11_w7yt6"]
+[ext_resource type="Texture2D" uid="uid://ccc85gom6ksul" path="res://Arts/command.png" id="12_2jd8i"]
+[ext_resource type="Script" path="res://addons/juicy-effect/juicy_utilities/Juicy_list_container.gd" id="12_eenyh"]
+[ext_resource type="Shader" uid="uid://b2xssccr2g1tr" path="res://subtraction_shader.tres" id="12_gn6ew"]
+[ext_resource type="PackedScene" uid="uid://ckevg0bw0lth8" path="res://Scene/UI/party_member.tscn" id="12_vnhpa"]
+[ext_resource type="FontFile" uid="uid://bypcasp0kyo0b" path="res://Arts/Arsenal-Bold.ttf" id="14_2e4kl"]
+[ext_resource type="Texture2D" uid="uid://bsuloywppnqei" path="res://Arts/joker/joker_skill.png" id="15_06jrs"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Logic/Juicy_Player.gd" id="15_faja4"]
+[ext_resource type="Texture2D" uid="uid://chpdy6n4m2mfm" path="res://Arts/recovery_skill.png" id="15_tcrsj"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_screen_transition.gd" id="16_q2oxp"]
+[ext_resource type="Texture2D" uid="uid://drelv8v4kv2pf" path="res://Arts/screen_transition_test.png" id="17_31nkm"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/Juicy_player_effect.gd" id="19_ua0uw"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_set_active.gd" id="20_d7ina"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_effect_playsound.gd" id="21_v2nyw"]
+[ext_resource type="AudioStream" uid="uid://58cdostlto8y" path="res://Audio/cancel.wav" id="22_gx6qq"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/Juicy_Play_animation.gd" id="23_h35wd"]
+[ext_resource type="AudioStream" uid="uid://i7xo33jq15by" path="res://Audio/openMenu.wav" id="23_tryfq"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Logic/Juicy_effect.gd" id="24_cpp2c"]
+[ext_resource type="AudioStream" uid="uid://0m8rve436877" path="res://Audio/kick.wav" id="24_w6b2q"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/Juicy_play_Shake.gd" id="25_m5f7l"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_scale_mass.gd" id="26_n4qhl"]
+[ext_resource type="Script" path="res://assets/FSM/Logic/StateMachine.gd" id="27_qpwrt"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bwm4w"]
+blend_mode = 3
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_k0tmu"]
+viewport_path = NodePath("UIColorOverlay/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvyuw"]
+shader = ExtResource("12_gn6ew")
+
+[sub_resource type="Animation" id="Animation_rqcom"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Stars:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(1318, 753, 1311, -82, 839, -79, 562, 762)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../skillBox/Skill_blackbox/Skill_whitebox:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(730, 877, 1308, 113, 504, -203, 146, 769)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../SubViewport/Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.635, 3.275, 1.661)]
+}
+
+[sub_resource type="Animation" id="Animation_yr4v3"]
+resource_name = "Skill_transition"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Stars:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1, 1.1, 1.7, 2.1, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 2.82843, 1),
+"update": 0,
+"values": [PackedVector2Array(1318, 753, 1311, -82, 839, -79, 562, 762), PackedVector2Array(1318, 753, 1337, -12, 1335, -22, -38, 752), PackedVector2Array(-21, 777, 1973, 766, 1335, -22, -38, 752), PackedVector2Array(-21, 777, -14, 801, 1340, 746, -38, -60), PackedVector2Array(-54, -59, -14, 801, 1340, 746, -38, -60), PackedVector2Array(-54, -59, -30, 765, 516, 751, 944, -25), PackedVector2Array(-54, -59, -30, 765, 516, 751, 944, -25), PackedVector2Array(-54, -59, -30, 765, 319, 755, 806, -35)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../skillBox/Skill_blackbox/Skill_whitebox:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.1, 2.7, 2.9),
+"transitions": PackedFloat32Array(1.46409, 2.73208, 1),
+"update": 0,
+"values": [PackedVector2Array(730, 877, 1384, 173, 504, -203, 146, 769), PackedVector2Array(730, 877, 1416, 281, 1302, -111, 146, 769), PackedVector2Array(730, 877, 1290, 635, 1306, 449, 128, 733)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../SubViewport/Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.34, 3.29, 2.761)]
+}
+
+[sub_resource type="Animation" id="Animation_khe6r"]
+resource_name = "main_menu_start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Stars:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(3.03143, 1),
+"update": 0,
+"values": [PackedVector2Array(1318, 753, 1311, -82, 536, -35, 846, 754), PackedVector2Array(1318, 753, 1311, -82, 839, -79, 562, 762)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../SubViewport/Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.635, 3.275, 1.661)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5o2ua"]
+_data = {
+"RESET": SubResource("Animation_rqcom"),
+"Skill_transition": SubResource("Animation_yr4v3"),
+"main_menu_start": SubResource("Animation_khe6r")
+}
+
+[sub_resource type="World3D" id="World3D_ldfpn"]
+
+[sub_resource type="Curve" id="Curve_5asf6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.86755, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_sur5f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.273731, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="GDScript" id="GDScript_iy01n"]
+resource_name = "game_state"
+script/source = "extends State
+@export var main_menu_state : State
+
+@export var open_menu : Juicy_player
+func Update(_delta: float):
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		Transitioned.emit(self,main_menu_state)
+		open_menu.Play()
+		
+	pass
+
+"
+
+[sub_resource type="GDScript" id="GDScript_qdsg3"]
+resource_name = "main_menu_state"
+script/source = "extends State
+@export var game_state : State
+@export var leave_effect : Juicy_player
+func Update(_delta: float):
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		Transitioned.emit(self,game_state)
+		leave_effect.Play()
+		
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_jos3y"]
+resource_name = "skill_menu_state"
+script/source = "extends State
+
+@export var return_to_main : Juicy_player
+@export var main_menu_state : State
+
+
+
+func Update(_delta: float):
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		return_to_main.Play()
+		Transitioned.emit(self,main_menu_state)
+		
+	pass
+	
+
+"
+
+[node name="PersonaMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIColorOverlay" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="AllPersonaMenu" type="Control" parent="UIColorOverlay"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wa42r")
+
+[node name="redtint" type="Polygon2D" parent="UIColorOverlay/AllPersonaMenu" node_paths=PackedStringArray("target_polygon")]
+material = SubResource("CanvasItemMaterial_bwm4w")
+color = Color(1, 0, 0, 1)
+offset = Vector2(4.845, 10.485)
+invert_enabled = true
+invert_border = 2165.8
+script = ExtResource("2_wg4wp")
+target_polygon = NodePath("../Stars")
+
+[node name="skillBox" type="Node2D" parent="UIColorOverlay/AllPersonaMenu"]
+
+[node name="Skill_blackbox" type="Polygon2D" parent="UIColorOverlay/AllPersonaMenu/skillBox"]
+clip_children = 2
+position = Vector2(68, 68)
+color = Color(0, 0, 0, 1)
+invert_border = 2450.7
+polygon = PackedVector2Array(710, 818, 1242, 227, 672, -165, 162, 714)
+
+[node name="Skill_whitebox" type="Polygon2D" parent="UIColorOverlay/AllPersonaMenu/skillBox/Skill_blackbox"]
+visible = false
+clip_children = 2
+position = Vector2(-20, -28)
+color = Color(0.811765, 0.827451, 0.811765, 1)
+invert_border = 2450.7
+polygon = PackedVector2Array(730, 877, 1308, 113, 504, -203, 146, 769)
+
+[node name="Control" type="Control" parent="UIColorOverlay/AllPersonaMenu" node_paths=PackedStringArray("polygon2d")]
+anchors_preset = 0
+offset_right = 1305.0
+offset_bottom = 777.0
+script = ExtResource("1_x7s2m")
+polygon2d = NodePath("../Stars")
+width = 10.0
+
+[node name="Stars" type="Polygon2D" parent="UIColorOverlay/AllPersonaMenu"]
+clip_children = 1
+polygon = PackedVector2Array(1318, 753, 1311, -82, 839, -79, 562, 762)
+
+[node name="Star_layer1" type="Node2D" parent="UIColorOverlay/AllPersonaMenu/Stars"]
+modulate = Color(0.835294, 0.835294, 0.835294, 1)
+
+[node name="star62" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(327, 434)
+rotation = 1.26028
+scale = Vector2(100.21, 100.21)
+texture = ExtResource("3_31d48")
+
+[node name="star" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1105, 165)
+rotation = -0.261799
+scale = Vector2(35.6173, 35.6173)
+texture = ExtResource("3_31d48")
+
+[node name="star26" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(589, 435)
+rotation = -0.261799
+scale = Vector2(35.6173, 35.6173)
+texture = ExtResource("3_31d48")
+
+[node name="star2" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(701, 497)
+scale = Vector2(11.3031, 11.3031)
+texture = ExtResource("3_31d48")
+
+[node name="star3" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(471.001, 364.999)
+scale = Vector2(11.3031, 11.3031)
+texture = ExtResource("3_31d48")
+
+[node name="star4" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(713, 655)
+rotation = 0.104603
+scale = Vector2(23.8403, 23.8403)
+texture = ExtResource("3_31d48")
+
+[node name="star5" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(460.002, 129)
+rotation = -0.493354
+scale = Vector2(17.5265, 17.5265)
+texture = ExtResource("3_31d48")
+
+[node name="star6" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(258, 312)
+rotation = -0.493354
+scale = Vector2(35.4045, 35.4045)
+texture = ExtResource("3_31d48")
+
+[node name="star7" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(494.002, 509)
+rotation = -0.493354
+scale = Vector2(17.5265, 17.5265)
+texture = ExtResource("3_31d48")
+
+[node name="star13" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(743, 152)
+rotation = -1.85904
+scale = Vector2(20.6542, 20.6542)
+texture = ExtResource("3_31d48")
+
+[node name="star8" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(880, 479)
+rotation = 0.211622
+scale = Vector2(22.6977, 22.6977)
+texture = ExtResource("3_31d48")
+
+[node name="star17" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1255, 629)
+rotation = 0.211622
+scale = Vector2(22.6977, 22.6977)
+texture = ExtResource("3_31d48")
+
+[node name="star18" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(626, 39)
+rotation = 0.211622
+scale = Vector2(22.6977, 22.6977)
+texture = ExtResource("3_31d48")
+
+[node name="star19" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(343, 644)
+rotation = 0.211622
+scale = Vector2(22.6977, 22.6977)
+texture = ExtResource("3_31d48")
+
+[node name="star20" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(323, 22)
+rotation = 0.211622
+scale = Vector2(22.6977, 22.6977)
+texture = ExtResource("3_31d48")
+
+[node name="star21" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(77, 328)
+rotation = 0.211622
+scale = Vector2(22.6977, 22.6977)
+texture = ExtResource("3_31d48")
+
+[node name="star22" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(536, 210)
+rotation = -0.564244
+scale = Vector2(22.6977, 22.6977)
+texture = ExtResource("3_31d48")
+
+[node name="star9" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(134, 530)
+rotation = 0.25103
+scale = Vector2(17.5265, 17.5265)
+texture = ExtResource("3_31d48")
+
+[node name="star10" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(134.002, 124)
+rotation = -0.493354
+scale = Vector2(17.5265, 17.5265)
+texture = ExtResource("3_31d48")
+
+[node name="star11" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1115.33, 508.345)
+rotation = -0.254061
+scale = Vector2(22.9944, 22.9944)
+texture = ExtResource("3_31d48")
+
+[node name="star14" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1183, 358)
+rotation = 0.556736
+scale = Vector2(15.5196, 15.5196)
+texture = ExtResource("3_31d48")
+
+[node name="star16" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1101, 383)
+rotation = 3.88708
+scale = Vector2(15.5196, 15.5196)
+texture = ExtResource("3_31d48")
+
+[node name="star23" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(852, 23)
+rotation = 3.88708
+scale = Vector2(23.2372, 23.2372)
+texture = ExtResource("3_31d48")
+
+[node name="star24" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(873.923, 550.979)
+rotation = 3.88708
+scale = Vector2(27.8389, 27.8389)
+texture = ExtResource("3_31d48")
+
+[node name="star27" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(873.923, 550.979)
+rotation = 3.88708
+scale = Vector2(27.8389, 27.8389)
+texture = ExtResource("3_31d48")
+
+[node name="star25" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(524, 658)
+rotation = 3.17501
+scale = Vector2(23.2372, 23.2372)
+texture = ExtResource("3_31d48")
+
+[node name="star15" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(744, 361)
+rotation = 0.556736
+scale = Vector2(21.6641, 21.6641)
+texture = ExtResource("3_31d48")
+
+[node name="star12" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1071, 644)
+rotation = 1.08182
+scale = Vector2(17.5265, 17.5265)
+texture = ExtResource("3_31d48")
+
+[node name="star28" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer1"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1253, 499)
+rotation = 1.08182
+scale = Vector2(28.9916, 28.9916)
+texture = ExtResource("3_31d48")
+
+[node name="Star_layer2" type="Node2D" parent="UIColorOverlay/AllPersonaMenu/Stars"]
+modulate = Color(0.835294, 0.835294, 0.835294, 1)
+
+[node name="star" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(886, 201)
+rotation = 1.26028
+scale = Vector2(35.6173, 35.6173)
+texture = ExtResource("3_31d48")
+
+[node name="star2" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(920, 385)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star62" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1040, 65.0001)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star3" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1073, 271)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star4" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(952, 17)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star5" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1010, 243)
+rotation = 0.137403
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star6" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1143, 20.9999)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star31" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1207, 139)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star32" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1197, 255)
+rotation = -2.96111
+scale = Vector2(20.3316, 20.3316)
+texture = ExtResource("3_31d48")
+
+[node name="star33" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1341.93, 798.93)
+rotation = 0.211622
+scale = Vector2(22.6977, 22.6977)
+texture = ExtResource("3_31d48")
+
+[node name="star34" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1269.93, 527.93)
+rotation = 0.556736
+scale = Vector2(15.5196, 15.5196)
+texture = ExtResource("3_31d48")
+
+[node name="star35" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1293.93, 308.93)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star36" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1283.93, 424.93)
+rotation = -2.96111
+scale = Vector2(20.3316, 20.3316)
+texture = ExtResource("3_31d48")
+
+[node name="star37" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1360.93, 463.93)
+rotation = 0.211622
+scale = Vector2(22.6977, 22.6977)
+texture = ExtResource("3_31d48")
+
+[node name="star38" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1288.93, 192.93)
+rotation = 0.556736
+scale = Vector2(15.5196, 15.5196)
+texture = ExtResource("3_31d48")
+
+[node name="star39" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1312.93, -26.0699)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star40" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1302.93, 89.9301)
+rotation = -2.96111
+scale = Vector2(20.3316, 20.3316)
+texture = ExtResource("3_31d48")
+
+[node name="star7" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1055, 445)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star8" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(949, 504)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star9" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(769, 519)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star27" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(769, 519)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star10" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(872, 657)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star28" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1126, 618)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star29" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1017, 608)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star30" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(1020, 342)
+rotation = 0.53197
+scale = Vector2(18.7285, 18.7285)
+texture = ExtResource("3_31d48")
+
+[node name="star41" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(1182, 394)
+rotation = 0.53197
+scale = Vector2(21.8995, 21.8995)
+texture = ExtResource("3_31d48")
+
+[node name="star11" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(446, 304)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star12" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(295, 151)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star13" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(137, 622)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star14" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(330, 509)
+rotation = 0.53197
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star15" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(59, 188)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star16" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(175, 6)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star17" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(436, 38)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star18" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(645, 162)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star19" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(539, 103)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star20" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(770, 80)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star21" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(463, 614)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star22" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(438, 459)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star23" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(186, 420)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star24" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(40, 455)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star47" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(40, 455)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star48" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(629, 304)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star49" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(614, 551)
+rotation = -1.05382
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star50" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(606, 672)
+rotation = -1.82429
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star51" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(253, 617)
+rotation = 1.14858
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star52" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(42, 538)
+rotation = 1.14858
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star53" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(51, 678)
+rotation = 1.14858
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star54" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(232, 689)
+rotation = 2.10883
+scale = Vector2(28.8545, 28.8545)
+texture = ExtResource("3_31d48")
+
+[node name="star55" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(404, 691)
+rotation = 3.02522
+scale = Vector2(23.8682, 23.8682)
+texture = ExtResource("3_31d48")
+
+[node name="star25" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(166, 255)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star42" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(394, 230)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star43" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(317, 434)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star44" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(468, 249)
+rotation = -3.00635
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star56" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(258, 47)
+rotation = -3.00635
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star45" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(50, 55)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star46" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(197, 138)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star57" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(47, 289)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star58" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("1_2h0tm")
+position = Vector2(341, 298)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star26" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(807, 265)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star60" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(718, 24)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star61" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(712, 227)
+rotation = -2.82117
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="star59" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Stars/Star_layer2"]
+material = ExtResource("3_k5ji4")
+position = Vector2(755, 412)
+rotation = -2.17294
+scale = Vector2(24.265, 24.265)
+texture = ExtResource("3_31d48")
+
+[node name="Polygon2D" type="Polygon2D" parent="UIColorOverlay/AllPersonaMenu/Stars" node_paths=PackedStringArray("target_polygon")]
+color = Color(0.835294, 0.835294, 0.835294, 1)
+offset = Vector2(4.845, 10.485)
+invert_enabled = true
+script = ExtResource("2_wg4wp")
+target_polygon = NodePath("..")
+
+[node name="MainMenu" type="Control" parent="UIColorOverlay/AllPersonaMenu"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="JokerModel" type="TextureRect" parent="UIColorOverlay/AllPersonaMenu/MainMenu"]
+modulate = Color(0.815686, 0.827451, 0.815686, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -119.0
+offset_right = 1569.0
+offset_bottom = 701.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_k0tmu")
+
+[node name="JokerMainMenu" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/MainMenu"]
+modulate = Color(0.839216, 0.839216, 0.839216, 1)
+position = Vector2(833.245, 401.125)
+scale = Vector2(0.97658, 0.972222)
+texture = ExtResource("7_4pvbq")
+
+[node name="Command" type="TextureRect" parent="UIColorOverlay/AllPersonaMenu/MainMenu/JokerMainMenu"]
+material = SubResource("ShaderMaterial_qvyuw")
+offset_left = -281.846
+offset_top = 95.5286
+offset_right = 236.154
+offset_bottom = 274.529
+texture = ExtResource("12_2jd8i")
+
+[node name="Menu" type="Control" parent="UIColorOverlay/AllPersonaMenu/MainMenu"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 15.0
+offset_top = 6.0
+offset_right = 55.0
+offset_bottom = 46.0
+script = ExtResource("12_eenyh")
+list_delay = 0.05
+
+[node name="Skill" parent="UIColorOverlay/AllPersonaMenu/MainMenu/Menu" instance=ExtResource("5_3ecqd")]
+layout_mode = 2
+offset_left = 546.0
+offset_top = 195.0
+offset_right = 746.0
+offset_bottom = 281.0
+focus_neighbor_bottom = NodePath("../Item")
+auto_pivot_center = true
+
+[node name="Item" parent="UIColorOverlay/AllPersonaMenu/MainMenu/Menu" instance=ExtResource("5_3ecqd")]
+layout_mode = 2
+offset_left = 566.0
+offset_top = 226.0
+offset_right = 733.0
+offset_bottom = 298.0
+scale = Vector2(0.816386, 0.816386)
+focus_neighbor_top = NodePath("../Skill")
+focus_neighbor_bottom = NodePath("../Equip")
+auto_pivot_center = true
+
+[node name="Image" parent="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Item/Control" index="0"]
+texture = ExtResource("6_k0q5i")
+
+[node name="Equip" parent="UIColorOverlay/AllPersonaMenu/MainMenu/Menu" instance=ExtResource("5_3ecqd")]
+layout_mode = 2
+offset_left = 515.0
+offset_top = 263.0
+offset_right = 694.0
+offset_bottom = 349.0
+focus_neighbor_top = NodePath("../Item")
+auto_pivot_center = true
+
+[node name="Image" parent="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Equip/Control" index="0"]
+texture = ExtResource("7_1o3da")
+
+[node name="Skill_menu" type="Control" parent="UIColorOverlay/AllPersonaMenu"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="JokerModel_skill" type="TextureRect" parent="UIColorOverlay/AllPersonaMenu/Skill_menu"]
+modulate = Color(0.815686, 0.827451, 0.815686, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -322.0
+offset_top = -10.0
+offset_right = 918.0
+offset_bottom = 670.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_k0tmu")
+
+[node name="JokerSkill" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Skill_menu"]
+modulate = Color(0.811765, 0.827451, 0.811765, 1)
+position = Vector2(455, 375)
+scale = Vector2(0.9375, 0.9375)
+texture = ExtResource("15_06jrs")
+
+[node name="ColorRect" type="ColorRect" parent="UIColorOverlay/AllPersonaMenu/Skill_menu"]
+layout_mode = 0
+offset_left = -125.0
+offset_top = -44.0
+offset_right = 178.0
+offset_bottom = 863.0
+rotation = -0.100331
+color = Color(0, 0, 0, 1)
+
+[node name="PartyMemberList" type="VBoxContainer" parent="UIColorOverlay/AllPersonaMenu/Skill_menu"]
+layout_mode = 1
+offset_left = 81.0
+offset_top = 47.0
+offset_right = 506.0
+offset_bottom = 752.0
+script = ExtResource("12_eenyh")
+list_delay = 0.05
+
+[node name="PartyMember" parent="UIColorOverlay/AllPersonaMenu/Skill_menu/PartyMemberList" instance=ExtResource("12_vnhpa")]
+layout_mode = 2
+
+[node name="PartyMember2" parent="UIColorOverlay/AllPersonaMenu/Skill_menu/PartyMemberList" instance=ExtResource("12_vnhpa")]
+layout_mode = 2
+
+[node name="PartyMember3" parent="UIColorOverlay/AllPersonaMenu/Skill_menu/PartyMemberList" instance=ExtResource("12_vnhpa")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIColorOverlay/AllPersonaMenu/Skill_menu"]
+visible = false
+layout_mode = 0
+offset_left = 757.0
+offset_top = 136.0
+offset_right = 1036.0
+offset_bottom = 248.0
+scale = Vector2(0.635922, 0.635922)
+
+[node name="Skill_text" type="Button" parent="UIColorOverlay/AllPersonaMenu/Skill_menu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_2e4kl")
+theme_override_font_sizes/font_size = 36
+text = " Diarahan
+"
+icon = ExtResource("15_tcrsj")
+flat = true
+
+[node name="MenuAnimationPlayer" type="AnimationPlayer" parent="UIColorOverlay/AllPersonaMenu"]
+deterministic = true
+root_node = NodePath("../MainMenu")
+libraries = {
+"": SubResource("AnimationLibrary_5o2ua")
+}
+
+[node name="SubViewport" type="SubViewport" parent="UIColorOverlay"]
+world_3d = SubResource("World3D_ldfpn")
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="joker" parent="UIColorOverlay/SubViewport" instance=ExtResource("11_w7yt6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.838, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="UIColorOverlay/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.635, 3.275, 1.661)
+current = true
+fov = 45.0
+
+[node name="Return_to_main" type="Node" parent="UIColorOverlay"]
+script = ExtResource("15_faja4")
+
+[node name="set_menu_active" type="Node" parent="UIColorOverlay/Return_to_main" node_paths=PackedStringArray("target_Player")]
+script = ExtResource("19_ua0uw")
+target_Player = NodePath("../../MainMenu_start_lite")
+initial_delay = 0.1
+
+[node name="set_active2" type="Node" parent="UIColorOverlay/Return_to_main" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/skillBox")
+action = 2
+
+[node name="set_active3" type="Node" parent="UIColorOverlay/Return_to_main" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/Skill_menu")
+action = 2
+
+[node name="screen_transition" type="Node" parent="UIColorOverlay/Return_to_main"]
+script = ExtResource("16_q2oxp")
+transition_texture = ExtResource("17_31nkm")
+duration = 0.5
+
+[node name="PlaySound2" type="Node" parent="UIColorOverlay/Return_to_main"]
+script = ExtResource("21_v2nyw")
+audioClip = ExtResource("22_gx6qq")
+
+[node name="Skill_open" type="Node" parent="UIColorOverlay"]
+script = ExtResource("15_faja4")
+
+[node name="set_active" type="Node" parent="UIColorOverlay/Skill_open" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu")
+action = 2
+initial_delay = 0.1
+
+[node name="set_active_skill_menu" type="Node" parent="UIColorOverlay/Skill_open" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/Skill_menu")
+initial_state = 2
+action = 1
+
+[node name="set_active2" type="Node" parent="UIColorOverlay/Skill_open" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/skillBox")
+initial_state = 2
+action = 1
+
+[node name="set_active4" type="Node" parent="UIColorOverlay/Skill_open" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/Skill_menu/JokerSkill")
+initial_state = 2
+action = 2
+
+[node name="set_active_model3" type="Node" parent="UIColorOverlay/Skill_open" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/Skill_menu/JokerModel_skill")
+action = 1
+
+[node name="Play_animation_model2" type="Node" parent="UIColorOverlay/Skill_open" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("23_h35wd")
+animation_name = "skill_pose"
+animation_player = NodePath("../../SubViewport/joker/AnimationPlayer")
+animation_speed = 0.8
+
+[node name="Wait2" type="Node" parent="UIColorOverlay/Skill_open"]
+script = ExtResource("24_cpp2c")
+stopper = true
+duration = 0.1
+
+[node name="Play_animation" type="Node" parent="UIColorOverlay/Skill_open" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("23_h35wd")
+animation_name = "Skill_transition"
+animation_player = NodePath("../../AllPersonaMenu/MenuAnimationPlayer")
+animation_speed = 6.0
+
+[node name="Wait" type="Node" parent="UIColorOverlay/Skill_open"]
+script = ExtResource("24_cpp2c")
+stopper = true
+duration = 0.5
+
+[node name="set_active_model2" type="Node" parent="UIColorOverlay/Skill_open" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/Skill_menu/JokerModel_skill")
+action = 2
+
+[node name="set_active3" type="Node" parent="UIColorOverlay/Skill_open" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/Skill_menu/JokerSkill")
+initial_state = 2
+action = 1
+
+[node name="shake" type="Node" parent="UIColorOverlay/Skill_open" node_paths=PackedStringArray("target_node")]
+script = ExtResource("25_m5f7l")
+target_node = NodePath("../../AllPersonaMenu")
+min_value = -50.0
+max_value = 50.0
+fall_off = SubResource("Curve_5asf6")
+duration = 0.2
+
+[node name="MainMenu_start_lite" type="Node" parent="UIColorOverlay"]
+script = ExtResource("15_faja4")
+
+[node name="set_active" type="Node" parent="UIColorOverlay/MainMenu_start_lite" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu")
+action = 1
+
+[node name="menu_on" type="Node" parent="UIColorOverlay/MainMenu_start_lite" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu/Menu")
+action = 1
+also_set_process = true
+
+[node name="model_off" type="Node" parent="UIColorOverlay/MainMenu_start_lite" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu/JokerModel")
+action = 2
+
+[node name="portrait_on" type="Node" parent="UIColorOverlay/MainMenu_start_lite" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu/JokerMainMenu")
+action = 1
+also_set_process = true
+
+[node name="Play_animation_model" type="Node" parent="UIColorOverlay/MainMenu_start_lite" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("23_h35wd")
+animation_name = "MainMenu"
+animation_player = NodePath("../../SubViewport/joker/AnimationPlayer")
+animation_speed = 0.8
+
+[node name="Play_animation" type="Node" parent="UIColorOverlay/MainMenu_start_lite" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("23_h35wd")
+animation_name = "main_menu_start"
+animation_player = NodePath("../../AllPersonaMenu/MenuAnimationPlayer")
+animation_speed = 6.0
+
+[node name="Main_Menu_joker_model_change" type="Node" parent="UIColorOverlay"]
+script = ExtResource("15_faja4")
+
+[node name="portrait_on" type="Node" parent="UIColorOverlay/Main_Menu_joker_model_change" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu/JokerMainMenu")
+initial_state = 2
+play_start_state = 2
+action = 1
+
+[node name="menu_on" type="Node" parent="UIColorOverlay/Main_Menu_joker_model_change" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu/Menu")
+initial_state = 2
+play_start_state = 2
+action = 1
+also_set_process = true
+
+[node name="model_off" type="Node" parent="UIColorOverlay/Main_Menu_joker_model_change" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu/JokerModel")
+initial_state = 1
+play_start_state = 1
+action = 2
+
+[node name="shake" type="Node" parent="UIColorOverlay/Main_Menu_joker_model_change" node_paths=PackedStringArray("target_node")]
+script = ExtResource("25_m5f7l")
+target_node = NodePath("../../AllPersonaMenu")
+min_value = -50.0
+max_value = 50.0
+fall_off = SubResource("Curve_5asf6")
+duration = 0.2
+
+[node name="MainMenu_start" type="Node" parent="UIColorOverlay"]
+script = ExtResource("15_faja4")
+
+[node name="go_to_mainmenu_state" type="Node" parent="UIColorOverlay/MainMenu_start"]
+script = ExtResource("24_cpp2c")
+
+[node name="star_appear" type="Node" parent="UIColorOverlay/MainMenu_start" node_paths=PackedStringArray("target_node")]
+script = ExtResource("26_n4qhl")
+target_node = NodePath("../../AllPersonaMenu/Stars/Star_layer2")
+target_scale = Vector3(0, 0, 0)
+curve = SubResource("Curve_sur5f")
+revert_on_exit = false
+duration = 0.5
+
+[node name="portrait_off" type="Node" parent="UIColorOverlay/MainMenu_start" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu/JokerMainMenu")
+action = 2
+
+[node name="menu_off" type="Node" parent="UIColorOverlay/MainMenu_start" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu/Menu")
+action = 2
+also_set_process = true
+
+[node name="model_on" type="Node" parent="UIColorOverlay/MainMenu_start" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu/JokerModel")
+action = 1
+
+[node name="PlaySound" type="Node" parent="UIColorOverlay/MainMenu_start"]
+script = ExtResource("21_v2nyw")
+audioClip = ExtResource("23_tryfq")
+
+[node name="PlaySound2" type="Node" parent="UIColorOverlay/MainMenu_start"]
+script = ExtResource("21_v2nyw")
+audioClip = ExtResource("24_w6b2q")
+initial_delay = 0.45
+
+[node name="Play_animation_model" type="Node" parent="UIColorOverlay/MainMenu_start" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("23_h35wd")
+animation_name = "MainMenu"
+animation_player = NodePath("../../SubViewport/joker/AnimationPlayer")
+animation_speed = 0.8
+
+[node name="Play_animation" type="Node" parent="UIColorOverlay/MainMenu_start" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("23_h35wd")
+animation_name = "main_menu_start"
+animation_player = NodePath("../../AllPersonaMenu/MenuAnimationPlayer")
+animation_speed = 6.0
+
+[node name="set_active" type="Node" parent="UIColorOverlay/MainMenu_start" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu/MainMenu")
+action = 1
+
+[node name="Wait" type="Node" parent="UIColorOverlay/MainMenu_start"]
+script = ExtResource("24_cpp2c")
+stopper = true
+duration = 0.5
+
+[node name="play_model_change" type="Node" parent="UIColorOverlay/MainMenu_start" node_paths=PackedStringArray("target_Player")]
+script = ExtResource("19_ua0uw")
+target_Player = NodePath("../../Main_Menu_joker_model_change")
+
+[node name="Leave_menu" type="Node" parent="UIColorOverlay"]
+script = ExtResource("15_faja4")
+
+[node name="set_menu_active_false" type="Node" parent="UIColorOverlay/Leave_menu" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu")
+action = 2
+
+[node name="screen_transition" type="Node" parent="UIColorOverlay/Leave_menu"]
+script = ExtResource("16_q2oxp")
+transition_texture = ExtResource("17_31nkm")
+duration = 0.5
+
+[node name="PlaySound2" type="Node" parent="UIColorOverlay/Leave_menu"]
+script = ExtResource("21_v2nyw")
+audioClip = ExtResource("22_gx6qq")
+
+[node name="open_menu" type="Node" parent="UIColorOverlay"]
+script = ExtResource("15_faja4")
+
+[node name="set_menu_active_false" type="Node" parent="UIColorOverlay/open_menu" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu")
+initial_state = 2
+action = 1
+
+[node name="play_menu_start" type="Node" parent="UIColorOverlay/open_menu" node_paths=PackedStringArray("target_Player")]
+script = ExtResource("19_ua0uw")
+target_Player = NodePath("../../MainMenu_start")
+
+[node name="StateMachine" type="Node" parent="UIColorOverlay" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("27_qpwrt")
+initial_state = NodePath("game_state")
+
+[node name="game_state" type="Node" parent="UIColorOverlay/StateMachine" node_paths=PackedStringArray("main_menu_state", "open_menu")]
+script = SubResource("GDScript_iy01n")
+main_menu_state = NodePath("../main_menu_state")
+open_menu = NodePath("../../open_menu")
+
+[node name="main_menu_state" type="Node" parent="UIColorOverlay/StateMachine" node_paths=PackedStringArray("game_state", "leave_effect")]
+script = SubResource("GDScript_qdsg3")
+game_state = NodePath("../game_state")
+leave_effect = NodePath("../../Leave_menu")
+
+[node name="skill_menu_state" type="Node" parent="UIColorOverlay/StateMachine" node_paths=PackedStringArray("return_to_main", "main_menu_state")]
+script = SubResource("GDScript_jos3y")
+return_to_main = NodePath("../../Return_to_main")
+main_menu_state = NodePath("../main_menu_state")
+
+[connection signal="button_down" from="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Skill" to="UIColorOverlay/Skill_open" method="Play"]
+[connection signal="button_down" from="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Skill" to="UIColorOverlay/StateMachine/skill_menu_state" method="_direct_enter_state"]
+[connection signal="juice_play" from="UIColorOverlay/Skill_open" to="UIColorOverlay/AllPersonaMenu/Skill_menu/PartyMemberList/PartyMember" method="_set_focus"]
+[connection signal="on_play" from="UIColorOverlay/MainMenu_start_lite/menu_on" to="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Skill" method="_set_focus"]
+[connection signal="on_play" from="UIColorOverlay/Main_Menu_joker_model_change/menu_on" to="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Skill" method="_set_focus"]
+[connection signal="on_play" from="UIColorOverlay/MainMenu_start/menu_off" to="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Skill" method="_set_focus"]
+
+[editable path="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Item"]
+[editable path="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Equip"]
+[editable path="UIColorOverlay/SubViewport/joker"]

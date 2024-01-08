@@ -1,0 +1,15 @@
+VisibleOnScreenEnabler2D
+Node
+WorldEnvironment
+DirectionalLight3D
+Juicy_effect_scale
+Juicy_player
+CSGBox3D
+CSGMesh3D
+Camera3D
+Juicy_effect
+AudioStreamPlayer2D
+TextureRect
+VBoxContainer
+Button
+Label

@@ -1,0 +1,135 @@
+[gd_scene load_steps=16 format=3 uid="uid://ckevg0bw0lth8"]
+
+[ext_resource type="Script" path="res://Scene/Juicy_button.gd" id="1_jxkja"]
+[ext_resource type="PackedScene" uid="uid://d2rynssn68ssn" path="res://Scene/selecting.tscn" id="2_iou2v"]
+[ext_resource type="Texture2D" uid="uid://qw3innls6ou0" path="res://Arts/joker_icon.png" id="3_3qarc"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Logic/Juicy_Player.gd" id="4_eg3mm"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_scale.gd" id="5_c3gmm"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_set_active.gd" id="6_a8avu"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_set_order.gd" id="7_28vxm"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_effect_playsound.gd" id="8_by3la"]
+[ext_resource type="AudioStream" uid="uid://7icxns1wk1dd" path="res://Audio/select.wav" id="9_jedbl"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_position.gd" id="10_yx1gp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_skw6f"]
+
+[sub_resource type="Curve" id="Curve_ut02v"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_l5p42"]
+max_value = 1.5
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.752759, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_wudnv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_8dysl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="PartyMember" type="Button"]
+custom_minimum_size = Vector2(0, 100)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_skw6f")
+flat = true
+script = ExtResource("1_jxkja")
+auto_pivot_center = true
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 373.0
+offset_bottom = 156.0
+pivot_offset = Vector2(150, 75)
+
+[node name="whitebox" type="Polygon2D" parent="Control"]
+show_behind_parent = true
+position = Vector2(-41.4612, -39.5219)
+scale = Vector2(0.956817, 1.34995)
+polygon = PackedVector2Array(57.8466, 47.6273, 107.953, 27.795, 150.147, 39.9503, 164.212, 57.8634, 371.67, 46.3478, 372.32, 78.0578, 372.549, 89.2112, 334.749, 93.0497, 334.749, 121.199, 77.1858, 126.317, 56.9191, 119.65, 70.1534, 97.5279, 51.6932, 77.6956)
+
+[node name="selecting" parent="Control" instance=ExtResource("2_iou2v")]
+position = Vector2(159, 71)
+scale = Vector2(1.605, 2.39)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 2
+offset_right = 159.0
+offset_bottom = 165.0
+scale = Vector2(0.845, 0.845)
+texture = ExtResource("3_3qarc")
+
+[node name="blackbox" type="Polygon2D" parent="Control/TextureRect"]
+show_behind_parent = true
+position = Vector2(-1, 19)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(64, 37, 362, 15, 361, 67, 325, 76, 324, 118, 81, 118)
+
+[node name="Focus" type="Node" parent="."]
+script = ExtResource("4_eg3mm")
+
+[node name="scale" type="Node" parent="Focus" node_paths=PackedStringArray("target_node")]
+script = ExtResource("5_c3gmm")
+target_node = NodePath("../../Control/selecting")
+target_scale = Vector3(2.5, 2, 1)
+curve = SubResource("Curve_ut02v")
+revert_on_exit = false
+duration = 0.1
+
+[node name="scale2" type="Node" parent="Focus" node_paths=PackedStringArray("target_node")]
+script = ExtResource("5_c3gmm")
+target_node = NodePath("../../Control")
+target_scale = Vector3(1.2, 1.2, 1)
+curve = SubResource("Curve_l5p42")
+revert_on_exit = false
+duration = 0.1
+
+[node name="set_active" type="Node" parent="Focus" node_paths=PackedStringArray("target_node")]
+script = ExtResource("6_a8avu")
+target_node = NodePath("../../Control/selecting")
+initial_state = 2
+action = 1
+also_set_process = true
+
+[node name="set_order" type="Node" parent="Focus" node_paths=PackedStringArray("target_node")]
+script = ExtResource("7_28vxm")
+target_node = NodePath("../..")
+set_to = 1
+
+[node name="playSound" type="Node" parent="Focus"]
+script = ExtResource("8_by3la")
+audioClip = ExtResource("9_jedbl")
+
+[node name="Unfocus" type="Node" parent="."]
+script = ExtResource("4_eg3mm")
+
+[node name="scale" type="Node" parent="Unfocus" node_paths=PackedStringArray("target_node")]
+script = ExtResource("5_c3gmm")
+target_node = NodePath("../../Control")
+curve = SubResource("Curve_wudnv")
+revert_on_exit = false
+duration = 0.1
+
+[node name="set_active" type="Node" parent="Unfocus" node_paths=PackedStringArray("target_node")]
+script = ExtResource("6_a8avu")
+target_node = NodePath("../../Control/selecting")
+action = 2
+also_set_process = true
+
+[node name="set_order" type="Node" parent="Unfocus" node_paths=PackedStringArray("target_node")]
+script = ExtResource("7_28vxm")
+target_node = NodePath("../..")
+
+[node name="Appear" type="Node" parent="."]
+script = ExtResource("4_eg3mm")
+
+[node name="Juicy_effect_position" type="Node" parent="Appear" node_paths=PackedStringArray("target_node")]
+script = ExtResource("10_yx1gp")
+target_node = NodePath("../../Control")
+mode = 1
+target_position = Vector3(50, 0, 0)
+curve = SubResource("Curve_8dysl")
+duration = 0.1
+
+[connection signal="draw" from="Control/TextureRect" to="Appear" method="Play"]

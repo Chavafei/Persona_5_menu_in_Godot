@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://hxxiu13c6ydt"]
+
+[ext_resource type="Script" path="res://addons/juicy-effect/Logic/Juicy_Player.gd" id="1_wimda"]
+[ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_scale.gd" id="2_umxw8"]
+
+[sub_resource type="Curve" id="Curve_sjr6j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50813, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Environment" id="Environment_d2hqm"]
+background_mode = 1
+background_color = Color(0.262745, 0.796078, 0.909804, 1)
+
+[node name="Juicy_test_scene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75915, 2)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(23.8084, 0, 0, 0, 0.139735, 0, 0, 0, 16.3097, 0, 0, 0)
+
+[node name="box" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699291, -1.45836)
+
+[node name="Juicy_player" type="Node" parent="box"]
+script = ExtResource("1_wimda")
+autoplay = true
+
+[node name="Juicy_effect_scale" type="Node" parent="box/Juicy_player" node_paths=PackedStringArray("target_node")]
+script = ExtResource("2_umxw8")
+target_node = NodePath("../..")
+target_scale = Vector3(1.5, 1.5, 1)
+curve = SubResource("Curve_sjr6j")
+duration = 0.5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.851946, 0.163079, 0.497587, 0, 0.950266, -0.311439, -0.523629, 0.26533, 0.809576, 7.70685, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d2hqm")
