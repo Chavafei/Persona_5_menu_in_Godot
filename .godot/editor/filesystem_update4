@@ -1,10 +1,13 @@
-res://persona_menu_place.tscn
+res://Scene/persona_menu.tscn
 res://Scene/polygon_outline.gd
 res://shaders/star_shape_move.gdshader
 res://materials/stars.tres
 res://materials/star_grey.tres
-res://Arts/joker/face.tres
 res://subtraction_shader.tres
+res://materials/subtration.tres
+res://Arts/joker/black.tres
+res://Arts/joker/face.tres
+res://Arts/joker/white.tres
 res://addons/juicy-effect/shader/screen_transition_shader.gdshader
 res://shaderToy_style.gdshader
 res://shaders/polka_dots.gdshader
@@ -14,8 +17,8 @@ res://shaders/distortion.gdshader
 res://shaders/color_tint_additive.gdshader
 res://shaders/simple_mask.gdshader
 res://shaders/color_tint.gdshader
+res://persona_menu_place.tscn
 res://Scene/UI/menu_button.tscn
 res://Arts/joker/joker.tscn
 res://Scene/UI/party_member.tscn
 res://Scene/selecting.tscn
-res://Scene/persona_menu.tscn

@@ -72,13 +72,14 @@ func stop_play(ignoreloop : bool = false):
 
 	
 	on_stop.emit()
+	curDuration = 0.0
 	Play_Exit()
 	
 	curloop += 1
 	if loop :
 		if loop_amount > curloop or loop_infinite:
 			
-			curDuration = 0.0
+	
 			Play_Enter()
 			return
 			

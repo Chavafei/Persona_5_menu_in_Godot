@@ -38,6 +38,14 @@ _subresources={
 "Face": {
 "use_external/enabled": true,
 "use_external/path": "res://Arts/joker/face.tres"
+},
+"Neck": {
+"use_external/enabled": true,
+"use_external/path": "res://Arts/joker/white.tres"
+},
+"black": {
+"use_external/enabled": true,
+"use_external/path": "res://Arts/joker/black.tres"
 }
 }
 }

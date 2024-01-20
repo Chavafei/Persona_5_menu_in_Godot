@@ -1,8 +1,9 @@
-[gd_scene load_steps=46 format=3 uid="uid://clnac4xlws0xe"]
+[gd_scene load_steps=53 format=3 uid="uid://clnac4xlws0xe"]
 
 [ext_resource type="Material" uid="uid://mq6inndqf88j" path="res://materials/stars.tres" id="1_2h0tm"]
 [ext_resource type="Script" path="res://Scene/PersonaMenu_manager.gd" id="1_wa42r"]
 [ext_resource type="Script" path="res://Scene/polygon_outline.gd" id="1_x7s2m"]
+[ext_resource type="Material" uid="uid://bqnifo1vpv4at" path="res://materials/redtint.tres" id="2_h4kh5"]
 [ext_resource type="Script" path="res://Scene/copy_polygon.gd" id="2_wg4wp"]
 [ext_resource type="Texture2D" uid="uid://we8wxe57f0bb" path="res://white_square.png" id="3_31d48"]
 [ext_resource type="Material" uid="uid://bclenw36qrq7p" path="res://materials/star_grey.tres" id="3_k5ji4"]
@@ -10,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d08l5mkc1siaa" path="res://Arts/menu_Item.png" id="6_k0q5i"]
 [ext_resource type="Texture2D" uid="uid://bsmhhft105cgw" path="res://Arts/menu_Equip.png" id="7_1o3da"]
 [ext_resource type="Texture2D" uid="uid://c73rgql4og3jx" path="res://Arts/joker/joker_main_menu.png" id="7_4pvbq"]
+[ext_resource type="Material" uid="uid://flx616bppb0t" path="res://materials/subtration.tres" id="9_fm4l7"]
 [ext_resource type="PackedScene" uid="uid://db66oo3s713p4" path="res://Arts/joker/joker.tscn" id="11_w7yt6"]
 [ext_resource type="Texture2D" uid="uid://ccc85gom6ksul" path="res://Arts/command.png" id="12_2jd8i"]
 [ext_resource type="Script" path="res://addons/juicy-effect/juicy_utilities/Juicy_list_container.gd" id="12_eenyh"]
@@ -32,15 +34,15 @@
 [ext_resource type="Script" path="res://addons/juicy-effect/Effects/Juicy_play_Shake.gd" id="25_m5f7l"]
 [ext_resource type="Script" path="res://addons/juicy-effect/Effects/juicy_scale_mass.gd" id="26_n4qhl"]
 [ext_resource type="Script" path="res://assets/FSM/Logic/StateMachine.gd" id="27_qpwrt"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bwm4w"]
-blend_mode = 3
+[ext_resource type="Script" path="res://addons/juicy-effect/juicy_utilities/Juicy_shader_preloader.gd" id="34_pia5f"]
+[ext_resource type="Shader" path="res://shaders/star_shape_move.gdshader" id="35_ld172"]
+[ext_resource type="Shader" path="res://addons/juicy-effect/shader/screen_transition_shader.gdshader" id="37_10u4t"]
+[ext_resource type="Material" uid="uid://bvn8chv8y8quo" path="res://Arts/joker/face.tres" id="38_2hu0n"]
+[ext_resource type="Material" uid="uid://cm02pwm05rb84" path="res://Arts/joker/black.tres" id="39_w6hw8"]
+[ext_resource type="Material" uid="uid://cm3fpeotxh6yv" path="res://Arts/joker/white.tres" id="40_higcq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_k0tmu"]
 viewport_path = NodePath("UIColorOverlay/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvyuw"]
-shader = ExtResource("12_gn6ew")
 
 [sub_resource type="Animation" id="Animation_rqcom"]
 length = 0.001
@@ -213,6 +215,8 @@ func Update(_delta: float):
 
 "
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1l145"]
+
 [node name="PersonaMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -221,8 +225,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 53.0
+text = "Loading done"
+
 [node name="UIColorOverlay" type="CanvasLayer" parent="."]
 layer = 11
+
+[node name="star63" type="Sprite2D" parent="UIColorOverlay"]
+visible = false
+material = ExtResource("1_2h0tm")
+position = Vector2(1657, 331)
+rotation = 1.26028
+scale = Vector2(35.6173, 35.6173)
+texture = ExtResource("3_31d48")
 
 [node name="AllPersonaMenu" type="Control" parent="UIColorOverlay"]
 layout_mode = 3
@@ -232,7 +251,7 @@ offset_bottom = 40.0
 script = ExtResource("1_wa42r")
 
 [node name="redtint" type="Polygon2D" parent="UIColorOverlay/AllPersonaMenu" node_paths=PackedStringArray("target_polygon")]
-material = SubResource("CanvasItemMaterial_bwm4w")
+material = ExtResource("2_h4kh5")
 color = Color(1, 0, 0, 1)
 offset = Vector2(4.845, 10.485)
 invert_enabled = true
@@ -250,7 +269,6 @@ invert_border = 2450.7
 polygon = PackedVector2Array(710, 818, 1242, 227, 672, -165, 162, 714)
 
 [node name="Skill_whitebox" type="Polygon2D" parent="UIColorOverlay/AllPersonaMenu/skillBox/Skill_blackbox"]
-visible = false
 clip_children = 2
 position = Vector2(-20, -28)
 color = Color(0.811765, 0.827451, 0.811765, 1)
@@ -944,12 +962,13 @@ scale = Vector2(0.97658, 0.972222)
 texture = ExtResource("7_4pvbq")
 
 [node name="Command" type="TextureRect" parent="UIColorOverlay/AllPersonaMenu/MainMenu/JokerMainMenu"]
-material = SubResource("ShaderMaterial_qvyuw")
+material = ExtResource("9_fm4l7")
 offset_left = -281.846
 offset_top = 95.5286
 offset_right = 236.154
 offset_bottom = 274.529
 texture = ExtResource("12_2jd8i")
+metadata/_edit_use_anchors_ = true
 
 [node name="Menu" type="Control" parent="UIColorOverlay/AllPersonaMenu/MainMenu"]
 layout_mode = 3
@@ -997,27 +1016,28 @@ auto_pivot_center = true
 texture = ExtResource("7_1o3da")
 
 [node name="Skill_menu" type="Control" parent="UIColorOverlay/AllPersonaMenu"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="JokerModel_skill" type="TextureRect" parent="UIColorOverlay/AllPersonaMenu/Skill_menu"]
+visible = false
 modulate = Color(0.815686, 0.827451, 0.815686, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -322.0
-offset_top = -10.0
-offset_right = 918.0
-offset_bottom = 670.0
+offset_left = -324.0
+offset_top = 2.0
+offset_right = 916.0
+offset_bottom = 682.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_k0tmu")
 
 [node name="JokerSkill" type="Sprite2D" parent="UIColorOverlay/AllPersonaMenu/Skill_menu"]
+visible = false
 modulate = Color(0.811765, 0.827451, 0.811765, 1)
 position = Vector2(455, 375)
 scale = Vector2(0.9375, 0.9375)
@@ -1080,16 +1100,36 @@ world_3d = SubResource("World3D_ldfpn")
 transparent_bg = true
 size = Vector2i(1280, 720)
 
-[node name="joker" parent="UIColorOverlay/SubViewport" instance=ExtResource("11_w7yt6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.838, 0, 0)
-
 [node name="Camera3D" type="Camera3D" parent="UIColorOverlay/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.635, 3.275, 1.661)
 current = true
 fov = 45.0
 
+[node name="joker" parent="UIColorOverlay/SubViewport" instance=ExtResource("11_w7yt6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.838, 0, 0)
+
+[node name="Skeleton3D" parent="UIColorOverlay/SubViewport/joker/Armature" index="0"]
+bones/5/rotation = Quaternion(0.999676, 0.0112134, 0.0112009, -0.0199242)
+bones/6/rotation = Quaternion(0.0219206, -0.0115174, 0.0125008, 0.999615)
+bones/101/rotation = Quaternion(0.104384, 0, 0, 0.994537)
+bones/102/rotation = Quaternion(-0.00750805, 0, 0, 0.999972)
+bones/108/rotation = Quaternion(-0.155432, 0.178086, -0.099317, 0.966572)
+bones/109/rotation = Quaternion(-0.0191692, 0.0126349, 0.00143936, 0.999735)
+bones/110/rotation = Quaternion(0.0802764, -0.0758901, 0.0259455, 0.993541)
+bones/117/rotation = Quaternion(-0.0969724, 0.100955, -0.0478112, 0.988999)
+
 [node name="Return_to_main" type="Node" parent="UIColorOverlay"]
 script = ExtResource("15_faja4")
+
+[node name="screen_transition" type="Node" parent="UIColorOverlay/Return_to_main"]
+script = ExtResource("16_q2oxp")
+transition_texture = ExtResource("17_31nkm")
+duration = 0.5
+
+[node name="wait" type="Node" parent="UIColorOverlay/Return_to_main"]
+script = ExtResource("24_cpp2c")
+stopper = true
+duration = 0.01
 
 [node name="set_menu_active" type="Node" parent="UIColorOverlay/Return_to_main" node_paths=PackedStringArray("target_Player")]
 script = ExtResource("19_ua0uw")
@@ -1105,11 +1145,6 @@ action = 2
 script = ExtResource("20_d7ina")
 target_node = NodePath("../../AllPersonaMenu/Skill_menu")
 action = 2
-
-[node name="screen_transition" type="Node" parent="UIColorOverlay/Return_to_main"]
-script = ExtResource("16_q2oxp")
-transition_texture = ExtResource("17_31nkm")
-duration = 0.5
 
 [node name="PlaySound2" type="Node" parent="UIColorOverlay/Return_to_main"]
 script = ExtResource("21_v2nyw")
@@ -1326,15 +1361,20 @@ target_Player = NodePath("../../Main_Menu_joker_model_change")
 [node name="Leave_menu" type="Node" parent="UIColorOverlay"]
 script = ExtResource("15_faja4")
 
-[node name="set_menu_active_false" type="Node" parent="UIColorOverlay/Leave_menu" node_paths=PackedStringArray("target_node")]
-script = ExtResource("20_d7ina")
-target_node = NodePath("../../AllPersonaMenu")
-action = 2
-
 [node name="screen_transition" type="Node" parent="UIColorOverlay/Leave_menu"]
 script = ExtResource("16_q2oxp")
 transition_texture = ExtResource("17_31nkm")
 duration = 0.5
+
+[node name="wait" type="Node" parent="UIColorOverlay/Leave_menu"]
+script = ExtResource("24_cpp2c")
+stopper = true
+duration = 0.01
+
+[node name="set_menu_active_false" type="Node" parent="UIColorOverlay/Leave_menu" node_paths=PackedStringArray("target_node")]
+script = ExtResource("20_d7ina")
+target_node = NodePath("../../AllPersonaMenu")
+action = 2
 
 [node name="PlaySound2" type="Node" parent="UIColorOverlay/Leave_menu"]
 script = ExtResource("21_v2nyw")
@@ -1371,6 +1411,11 @@ leave_effect = NodePath("../../Leave_menu")
 script = SubResource("GDScript_jos3y")
 return_to_main = NodePath("../../Return_to_main")
 main_menu_state = NodePath("../main_menu_state")
+
+[node name="preloader" type="Node" parent="UIColorOverlay"]
+script = ExtResource("34_pia5f")
+shaders = Array[Shader]([ExtResource("35_ld172"), ExtResource("12_gn6ew"), ExtResource("37_10u4t")])
+materials = Array[Material]([ExtResource("1_2h0tm"), ExtResource("3_k5ji4"), ExtResource("9_fm4l7"), ExtResource("2_h4kh5"), ExtResource("38_2hu0n"), ExtResource("39_w6hw8"), ExtResource("40_higcq"), SubResource("CanvasItemMaterial_1l145")])
 
 [connection signal="button_down" from="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Skill" to="UIColorOverlay/Skill_open" method="Play"]
 [connection signal="button_down" from="UIColorOverlay/AllPersonaMenu/MainMenu/Menu/Skill" to="UIColorOverlay/StateMachine/skill_menu_state" method="_direct_enter_state"]

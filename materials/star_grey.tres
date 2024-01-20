@@ -12,4 +12,4 @@ shader_parameter/star_size = 1.0
 shader_parameter/sine_speed = -3.0
 shader_parameter/sharpness = 0.945
 shader_parameter/white_color = Color(1, 1, 1, 1)
-shader_parameter/black_color = Color(0.443137, 0.443137, 0.443137, 1)
+shader_parameter/black_color = Color(0.552941, 0.552941, 0.552941, 1)
