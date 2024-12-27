@@ -9,4 +9,4 @@ Any rights involving characters such as logos models or trademarks associated wi
 
 ## Misc
 
-- You might notice this little addon called 'Juicy effect' this is an addon I made myself to made to make adding juicyness to the game easier, It's not avaliable anywhere else currently. but i'll probably release it later when it's more functional.
+- You might notice this little addon called 'Juicy effect' this is an addon I made myself to made to make adding juicyness to the game easier, related repo : https://github.com/Chavafei/Juicy_effect
